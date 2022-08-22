@@ -7,12 +7,14 @@
     $usuario = $_POST['usuario'];
     $contrasena = $_POST['contrasena'];
     //$contrasena = hash('sha512', $contrasena);
+     
+    $validar_login = mysqli_query($conexion, "SELECT COUNT(*) as contarUsuario FROM usuarios WHERE 
+     usuario='".$usuario."' AND contrasena='".$contrasena."'");
 
+    $numrows=mysqli_fetch_array($validar_login);  
 
-    $validar_login = mysqli_query($conexion, "SELECT * FROM usuarios WHERE 
-    usuario='$usuario' and contrasena='$contrasena'");
     
-    if(mysqli_num_rows($validar_login) > 0 ){
+    if($numrows ['contarUsuario'] > 0 ){
         $_SESSION['usuario'] = $usuario;
         header("location: ../index/bodega.php");
         exit;
