@@ -7,7 +7,6 @@
     $usuario = $_POST['usuario'];
     $contrasena = $_POST['contrasena'];
     //$contrasena = hash('sha512', $contrasena);
-
      
     $validar_login = mysqli_query($conexion, "SELECT COUNT(*) as contarUsuario FROM usuarios WHERE 
      usuario='".$usuario."' AND contrasena='".$contrasena."'");
